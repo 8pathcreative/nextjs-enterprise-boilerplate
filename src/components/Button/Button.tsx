@@ -83,14 +83,18 @@ const Spinner = () => (
 
 export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   ({ className, intent, size, underline, loading, disabled, children, ...props }, ref) => {
-    const Comp = (props as ButtonAsAnchor).href ? 'a' : 'button'
+    const isLink = (props as ButtonAsAnchor).href !== undefined;
+    const Comp = isLink ? 'a' : 'button';
     
     return (
       <Comp
-        ref={ref as any}
+        ref={ref as (isLink extends true ? React.RefObject<HTMLAnchorElement> : React.RefObject<HTMLButtonElement>)}
         className={twMerge(button({ intent, size, className, underline, loading }))}
-        disabled={disabled || loading}
-        {...props}
+        disabled={!isLink && (disabled || loading)}
+        aria-disabled={disabled || loading}
+        aria-busy={loading}
+        role={isLink ? undefined : 'button'}
+        {...(props as any)}
       >
         {loading && <Spinner />}
         {children}
