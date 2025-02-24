@@ -3,10 +3,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const path = require('path')
 
-import { HeroSection } from '@/components/HeroSection'
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -53,13 +49,3 @@ const nextConfig = {
 }
 
 module.exports = withBundleAnalyzer(nextConfig)
-
-export function middleware(request: NextRequest) {
-  // Middleware logic here
-  return NextResponse.next()
-}
-
-// Optional: Configure paths the middleware runs on
-export const config = {
-  matcher: '/api/:path*'
-}
