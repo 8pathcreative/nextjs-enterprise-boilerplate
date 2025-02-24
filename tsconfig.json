@@ -23,8 +23,27 @@
       {
         "name": "next"
       }
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@utils/*": ["./src/utils/*"]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.mjs", "jest.config.js", ".next/types/**/*.ts", "eslint.config.mjs"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mjs",
+    "jest.config.js",
+    ".next/types/**/*.ts",
+    "eslint.config.mjs",
+    "src/types/**/*.d.ts"
+  ],
   "exclude": ["node_modules"]
 }
