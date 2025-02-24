@@ -10,3 +10,10 @@ export const imageSizes = {
   medium: 1080,
   large: 1920,
 }
+
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["node"],
+}
